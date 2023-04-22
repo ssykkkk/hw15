@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+$main-color: rgb(40, 200, 181);
+$main-color2: #fff;
+$size: 20px;
+$bg: black;
+%transform {
+  transform-origin: bottom center;
+}
+@mixin wid-hei($wid: 300px, $hei: 300px) {
+  width: $wid;
+  height: $hei;
+}
+@mixin radius($rad: 50%) {
+  border-radius: $rad;
+}
+@mixin position($top: 0, $left: 0) {
+  top: $top;
+  left: $left;
+  position: absolute;
+}
+.clock {
+  @include wid-hei;
+  @include radius;
+  border: 10px solid $main-color;
+  background: $bg;
+  position: relative;
+  font-family: "Oswald", sans-serif;
+  font-size: $size;
+  color: $main-color2;
+  .hour-hand {
+    @include wid-hei($wid: 4px, $hei: 75px);
+    @include radius($rad: 20px);
+    @include position($top: 75px, $left: 148px);
+    @extend %transform;
+    background: $main-color2;
+    z-index: 1;
+  }
+  .minute-hand {
+    @include wid-hei($wid: 3px, $hei: 95px);
+    @include radius($rad: 20px);
+    @include position($top: 55px, $left: 148px);
+    @extend %transform;
+    background: $main-color2;
+    z-index: 2;
+  }
+  .second-hand {
+    @include wid-hei($wid: 2px, $hei: 115px);
+    @include radius($rad: 20px);
+    @include position($top: 35px, $left: 149px);
+    @extend %transform;
+    background: $main-color;
+    z-index: 3;
+  }
+  .center {
+    @include wid-hei($wid: 10px, $hei: 10px);
+    @include radius;
+    @include position($top: 145px, $left: 145px);
+    background: $main-color;
+    z-index: 4;
+  }
+  .hour-markings {
+    > div {
+      @include wid-hei($wid: 2px, $hei: 12px);
+      @include radius($rad: 20px);
+      background: $main-color;
+    }
+    .line1 {
+      @include position($top: 25px, $left: 219px);
+      transform: rotate(30deg);
+    }
+    .line2 {
+      @include position($top: 76px, $left: 270px);
+      transform: rotate(60deg);
+    }
+    .twelve {
+      @include position($top: 5px, $left: 142px);
+    }
+    .line3 {
+      @include position($top: 214px, $left: 269px);
+      transform: rotate(120deg);
+    }
+    .line4 {
+      @include position($top: 263px, $left: 219px);
+      transform: rotate(150deg);
+    }
+    .three {
+      @include position($top: 135px, $left: 280px);
+    }
+    .line5 {
+      @include position($top: 263px, $left: 78px);
+      transform: rotate(30deg);
+    }
+    .line6 {
+      @include position($top: 212px, $left: 27px);
+      transform: rotate(60deg);
+    }
+    .six {
+      @include position($top: 265px, $left: 145px);
+    }
+    .line7 {
+      @include position($top: 74px, $left: 28px);
+      transform: rotate(120deg);
+    }
+    .line8 {
+      @include position($top: 25px, $left: 78px);
+      transform: rotate(150deg);
+    }
+    .nine {
+      @include position($top: 135px, $left: 10px);
+    }
+  }
+}
